@@ -1,0 +1,113 @@
+body, html, #root {
+  margin: 0;
+  padding: 0;
+  background-color: #1e1e1e;
+  font-family: 'Arial', sans-serif;
+}
+
+.membros-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #1e1e1e;
+  color: white;
+  min-height: 100vh;
+  padding-top: 30px;
+}
+
+.membros-titulo {
+  color: white;
+  font-size: 2rem;
+  margin-bottom: 15px;
+}
+
+.membros-box {
+  background-color: #222;
+  width: 90%;
+  max-width: 700px;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+}
+
+.membros-header {
+  background-color: #5b0000;
+  text-align: center;
+  padding: 15px;
+}
+
+.membros-header h2 {
+  color: #fff;
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.membros-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 25px;
+  padding: 30px;
+  justify-items: center;
+}
+
+.membro-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.membro-foto {
+  background-color: #d3d3d3;
+  width: 150px;
+  height: 180px;
+  border-radius: 4px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.membro-foto img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.foto-placeholder {
+  width: 100%;
+  height: 100%;
+  background-color: #666;
+}
+
+.membro-nome {
+  color: #e57373;
+  margin-top: 8px;
+  font-size: 0.9rem;
+}
+
+.membro-cargo {
+  color: #bbb;
+  font-size: 0.8rem;
+}
+
+.membros-loading, .membros-erro {
+  color: #e57373;
+  font-size: 1rem;
+  margin-top: 40px;
+}
+
+@media (max-width: 600px) {
+  .membros-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .membro-foto {
+    width: 200px;
+    height: 220px;
+  }
+
+  .membros-box {
+    width: 95%;
+  }
+}
