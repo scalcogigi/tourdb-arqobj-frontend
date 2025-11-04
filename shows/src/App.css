@@ -8,7 +8,9 @@
 }
 
 /* ========== BASE GLOBAL ========== */
-html, body, #root {
+html,
+body,
+#root {
   height: 100%;
 }
 
@@ -29,21 +31,40 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;      /* centraliza tudo na horizontal */
+  align-items: center; /* centraliza tudo na horizontal */
   background: var(--bg);
 }
 
-/* quando quiser centralizar um painel no meio (cadastro, etc) */
+/* quando quiser uma página com conteúdo centralizado (cadastro, etc) */
 .page--centered {
-  justify-content: flex-start;
+  justify-content: flex-start; /* header em cima, conteúdo vem depois */
 }
+
+/* wrapper para título + sectionbar + formulário na página de cadastro */
+.page__content {
+  width: 100%;
+  max-width: 520px;             /* limita o miolo */
+  display: flex;
+  flex-direction: column;
+  align-items: center;          /* centraliza horizontalmente */
+  justify-content: flex-start;
+  margin-top: 32px;             /* espaço abaixo do header */
+  gap: 16px;
+  align-self: center;           /* garante centralização dentro da page */
+}
+
+/* Garante que os filhos se alinhem dentro do miolo */
+.page__content > * {
+  width: 100%;
+}
+
 
 /* ========== HEADER / SECTION BAR (HOME) ========== */
 .header,
 .sectionbar,
 .gridWrap {
   width: 100%;
-  max-width: 1200px;        /* largura máxima do “miolo” */
+  max-width: 1200px; /* largura máxima do “miolo” */
   margin: 0 auto;
 }
 
@@ -60,7 +81,7 @@ body {
   letter-spacing: 0.5px;
 }
 
-/* Barra com o título SHOWS */
+/* Barra com o título (ex: SHOWS / BANDA) */
 .sectionbar {
   background: var(--bar);
   padding: 14px 16px;
@@ -102,8 +123,7 @@ body {
   height: 220px;
   display: flex;
   align-items: flex-end;
-  box-shadow: 0 0 0 1px rgba(0,0,0,0.35),
-              0 6px 14px rgba(0,0,0,0.4);
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.35), 0 6px 14px rgba(0, 0, 0, 0.4);
 }
 
 .card__footer {
@@ -122,24 +142,23 @@ body {
   margin-top: 2px;
 }
 
-/* ========== ESTILOS DO CADASTRO (PAINEL CLARINHO) ========== */
-/* se quiser usar o fundo claro na página de cadastro,
-   adicione className="page page--centered page--light" no componente */
+/* ========== ESTILOS DO CADASTRO (PAINEL CLARINHO / FORM) ========== */
+/* se quiser usar o fundo claro em alguma página,
+   adicione className="page page--centered page--light" */
 .page--light {
   background: #f5f5f5;
   color: #111;
 }
 
-/* título “CADASTRO MEMBRO” */
+/* título “CADASTRO BANDA / MEMBRO” */
 .page__title {
-  margin-top: 32px;
-  margin-bottom: 16px;
+  text-align: center;
   font-size: 1.6rem;
   font-weight: 600;
   letter-spacing: 0.12em;
 }
 
-/* Reaproveita header/sectionbar, mas limitados a 520px se quiser */
+/* quando estiver em página clara, limitar header/section */
 .page--light .header,
 .page--light .sectionbar {
   max-width: 520px;
@@ -152,11 +171,17 @@ body {
   max-width: 520px;
   padding: 32px 40px 48px;
   box-shadow: 0 6px 18px rgba(0,0,0,0.45);
+
+  /* novo */
+  display: flex;
+  justify-content: center;   /* centraliza o conteúdo do panel */
 }
 
 /* form */
 .form {
   width: 100%;
+  max-width: 440px;          /* largura real dos “ovais” */
+  margin: 0 auto;            /* centraliza dentro do panel */
 }
 
 .form__field {
@@ -166,7 +191,6 @@ body {
   margin-bottom: 22px;
   color: var(--text);
 }
-
 .form__label {
   font-size: 0.85rem;
   letter-spacing: 0.12em;
@@ -180,6 +204,11 @@ body {
   background: var(--maroon);
   color: #ffecec;
   font-size: 0.95rem;
+
+  /* novos */
+  width: 100%;               /* ocupa toda a largura do form */
+  box-sizing: border-box;    /* inclui padding na largura */
+  display: block;
 }
 
 .form__input::placeholder {
@@ -208,4 +237,34 @@ body {
 
 .btn--primary:hover {
   filter: brightness(1.1);
+}
+
+/* ========== PÁGINAS DE FORMULÁRIO (BANDA / MEMBRO) ========== */
+
+/* Miolo central (título + barra + painel) */
+.page--form .page__content {
+  width: 100%;
+  max-width: 700px;          /* largura da área central; ajuste se quiser mais largo/estreito */
+  margin-top: 32px;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: stretch;
+}
+
+/* Garante que título, barra e painel usem a mesma largura e fiquem centralizados */
+.page--form .page__title,
+.page--form .sectionbar,
+.page--form .panel {
+  width: 100%;
+  max-width: 520px;          /* mesma largura visual do card de formulário */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Título bem centralizado */
+.page--form .page__title {
+  text-align: center;
 }
