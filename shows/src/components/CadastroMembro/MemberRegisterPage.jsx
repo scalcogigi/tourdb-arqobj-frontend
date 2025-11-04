@@ -5,12 +5,16 @@ import MemberForm from "../CadastroMembro/MemberForm.jsx";
 
 export default function MemberRegisterPage() {
   return (
-    <div className="page page--centered">
-      <div className="page__title">CADASTRO MEMBRO</div>
-
+    <div className="page page--centered page--form">
+      {/* Header fixo no topo, largura total */}
       <Header />
-      <SectionBar title="TourDB" /> 
-      <MemberForm />
+
+      {/* Miolo da página de formulário */}
+      <div className="page__content">
+        <div className="page__title">CADASTRO MEMBRO</div>
+        <SectionBar title="MEMBRO" />
+        <MemberForm />
+      </div>
     </div>
   );
 }

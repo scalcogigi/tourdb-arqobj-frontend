@@ -20,6 +20,15 @@ export default function LoginPage() {
       alert("Email ou senha incorretos!");
     }
 };
+    function handleLogin(e) {
+    e.preventDefault();
+
+    // Valida email/senha aqui, depois:
+    localStorage.setItem("token", "usuarioteste123");
+    alert("Login realizado com sucesso!");
+    navigate("/"); // volta pra home ou dashboard
+  }
+
 
   return (
     <>

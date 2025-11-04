@@ -1,121 +1,5 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-}
-
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
-}
-:root{
-  --bg: #0f0f10;          /* page background (near black) */
-  --maroon: #6B0000;      /* primary deep red */
-  --maroon-dark: #4A0000; /* card fill */
-  --bar: #2a2a2a;         /* dark gray bars */
-  --text: #e7b3b3;        /* soft pinkish text */
-}
-
-html, body, #root { height: 100%; }
-body { margin: 0; background: var(--bg); font-family: system-ui, Arial, sans-serif; color: var(--text); }
-
-.page { min-height: 100vh; display: flex; flex-direction: column; }
-
-/* Header */
-.header {
-  background: var(--maroon);
-  padding: 24px 16px;
-  text-align: center;
-}
-.header__title {
-  margin: 0;
-  font-size: 2rem;
-  letter-spacing: 0.5px;
-}
-
-/* Section title bar */
-.sectionbar {
-  background: var(--bar);
-  padding: 14px 16px;
-  text-align: center;
-  border-top: 8px solid var(--bg);      /* small spacer accent */
-  border-bottom: 8px solid var(--bg);
-}
-.sectionbar__title {
-  margin: 0;
-  font-weight: 600;
-  color: var(--text);
-  letter-spacing: 1px;
-}
-
-/* Grid */
-.gridWrap {
-  flex: 1;
-  padding: 16px 16px 32px;
-  /* Optional alternating row vibe with subtle stripes */
-  background:
-    linear-gradient(var(--bar), var(--bar)) 0 33% / 100% 8px no-repeat,
-    linear-gradient(var(--bar), var(--bar)) 0 66% / 100% 8px no-repeat;
-}
-
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 24px;
-}
-
-/* Card */
-.card {
-  background: var(--maroon-dark);
-  border-radius: 8px;
-  height: 220px;
-  display: flex;
-  align-items: flex-end;
-  box-shadow: 0 0 0 1px rgba(0,0,0,0.35), 0 6px 14px rgba(0,0,0,0.4);
-}
-
-.card__footer {
-  width: 100%;
-  padding: 14px 16px;
-  border-top: 6px solid var(--bar); /* echoes the “stripe” feel */
-}
-
-.card__band { font-weight: 600; letter-spacing: 0.5px; }
-.card__date { opacity: 0.85; margin-top: 2px; }
-
-:root{
+/* ========== VARIÁVEIS DE TEMA ========== */
+:root {
   --bg: #0f0f10;
   --maroon: #6B0000;
   --maroon-dark: #4A0000;
@@ -123,63 +7,161 @@ body { margin: 0; background: var(--bg); font-family: system-ui, Arial, sans-ser
   --text: #e7b3b3;
 }
 
-html, body, #root { height: 100%; }
-body {
-  margin: 0;
-  background: #f5f5f5;          /* fundo clarinho para parecer o mock */
-  font-family: system-ui, Arial, sans-serif;
-  color: #111;
+/* ========== BASE GLOBAL ========== */
+html,
+body,
+#root {
+  height: 100%;
 }
 
+body {
+  margin: 0;
+  background: var(--bg);
+  font-family: system-ui, Arial, sans-serif;
+  color: var(--text);
+}
+
+/* root ocupando a tela inteira, sem max-width nem padding fixo */
+#root {
+  min-height: 100%;
+}
+
+/* ========== LAYOUT GERAL DA PÁGINA ========== */
 .page {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: stretch;
+  align-items: center; /* centraliza tudo na horizontal */
+  background: var(--bg);
 }
 
-/* centraliza “o card” no meio da tela */
+/* quando quiser uma página com conteúdo centralizado (cadastro, etc) */
 .page--centered {
-  align-items: center;
+  justify-content: flex-start; /* header em cima, conteúdo vem depois */
 }
 
-/* título “CADASTRO MEMBRO” */
+/* wrapper para título + sectionbar + formulário na página de cadastro */
+.page__content {
+  width: 100%;
+  max-width: 520px;             /* limita o miolo */
+  display: flex;
+  flex-direction: column;
+  align-items: center;          /* centraliza horizontalmente */
+  justify-content: flex-start;
+  margin-top: 32px;             /* espaço abaixo do header */
+  gap: 16px;
+  align-self: center;           /* garante centralização dentro da page */
+}
+
+/* Garante que os filhos se alinhem dentro do miolo */
+.page__content > * {
+  width: 100%;
+}
+
+
+/* ========== HEADER / SECTION BAR (HOME) ========== */
+.header,
+.sectionbar,
+.gridWrap {
+  width: 100%;
+  max-width: 1200px; /* largura máxima do “miolo” */
+  margin: 0 auto;
+}
+
+/* Header do topo */
+.header {
+  background: var(--maroon);
+  padding: 24px 16px;
+  text-align: center;
+}
+
+.header__title {
+  margin: 0;
+  font-size: 2rem;
+  letter-spacing: 0.5px;
+}
+
+/* Barra com o título (ex: SHOWS / BANDA) */
+.sectionbar {
+  background: var(--bar);
+  padding: 14px 16px;
+  text-align: center;
+  border-top: 8px solid var(--bg);
+  border-bottom: 8px solid var(--bg);
+}
+
+.sectionbar__title {
+  margin: 0;
+  font-weight: 600;
+  color: var(--text);
+  letter-spacing: 1px;
+}
+
+/* ========== GRID DE SHOWS ========== */
+.gridWrap {
+  flex: 1;
+  padding: 24px 16px 40px;
+  display: flex;
+  justify-content: center;
+  background:
+    linear-gradient(var(--bar), var(--bar)) 0 33% / 100% 8px no-repeat,
+    linear-gradient(var(--bar), var(--bar)) 0 66% / 100% 8px no-repeat;
+}
+
+.grid {
+  width: 100%;
+  max-width: 1200px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 24px;
+}
+
+/* Card de show */
+.card {
+  background: var(--maroon-dark);
+  border-radius: 8px;
+  height: 220px;
+  display: flex;
+  align-items: flex-end;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.35), 0 6px 14px rgba(0, 0, 0, 0.4);
+}
+
+.card__footer {
+  width: 100%;
+  padding: 14px 16px;
+  border-top: 6px solid var(--bar);
+}
+
+.card__band {
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.card__date {
+  opacity: 0.85;
+  margin-top: 2px;
+}
+
+/* ========== ESTILOS DO CADASTRO (PAINEL CLARINHO / FORM) ========== */
+/* se quiser usar o fundo claro em alguma página,
+   adicione className="page page--centered page--light" */
+.page--light {
+  background: #f5f5f5;
+  color: #111;
+}
+
+/* título “CADASTRO BANDA / MEMBRO” */
 .page__title {
-  margin-top: 32px;
-  margin-bottom: 16px;
+  text-align: center;
   font-size: 1.6rem;
   font-weight: 600;
   letter-spacing: 0.12em;
 }
 
-/* Header e bar reaproveitados da home */
-.header {
-  background: var(--maroon);
-  padding: 18px 16px;
-  text-align: center;
-  width: 100%;
+/* quando estiver em página clara, limitar header/section */
+.page--light .header,
+.page--light .sectionbar {
   max-width: 520px;
-}
-
-.header__title {
-  margin: 0;
-  font-size: 1.6rem;
-  color: var(--text);
-}
-
-.sectionbar {
-  background: var(--bar);
-  padding: 10px 16px;
-  text-align: center;
-  width: 100%;
-  max-width: 520px;
-}
-
-.sectionbar__title {
-  margin: 0;
-  color: var(--text);
-  letter-spacing: 0.15em;
-  font-size: 0.9rem;
 }
 
 /* bloco escuro do formulário */
@@ -189,11 +171,17 @@ body {
   max-width: 520px;
   padding: 32px 40px 48px;
   box-shadow: 0 6px 18px rgba(0,0,0,0.45);
+
+  /* novo */
+  display: flex;
+  justify-content: center;   /* centraliza o conteúdo do panel */
 }
 
 /* form */
 .form {
   width: 100%;
+  max-width: 440px;          /* largura real dos “ovais” */
+  margin: 0 auto;            /* centraliza dentro do panel */
 }
 
 .form__field {
@@ -203,7 +191,6 @@ body {
   margin-bottom: 22px;
   color: var(--text);
 }
-
 .form__label {
   font-size: 0.85rem;
   letter-spacing: 0.12em;
@@ -213,10 +200,15 @@ body {
   border: none;
   outline: none;
   padding: 10px 18px;
-  border-radius: 999px;          /* pill */
+  border-radius: 999px;
   background: var(--maroon);
   color: #ffecec;
   font-size: 0.95rem;
+
+  /* novos */
+  width: 100%;               /* ocupa toda a largura do form */
+  box-sizing: border-box;    /* inclui padding na largura */
+  display: block;
 }
 
 .form__input::placeholder {
@@ -247,3 +239,32 @@ body {
   filter: brightness(1.1);
 }
 
+/* ========== PÁGINAS DE FORMULÁRIO (BANDA / MEMBRO) ========== */
+
+/* Miolo central (título + barra + painel) */
+.page--form .page__content {
+  width: 100%;
+  max-width: 700px;          /* largura da área central; ajuste se quiser mais largo/estreito */
+  margin-top: 32px;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: stretch;
+}
+
+/* Garante que título, barra e painel usem a mesma largura e fiquem centralizados */
+.page--form .page__title,
+.page--form .sectionbar,
+.page--form .panel {
+  width: 100%;
+  max-width: 520px;          /* mesma largura visual do card de formulário */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Título bem centralizado */
+.page--form .page__title {
+  text-align: center;
+}

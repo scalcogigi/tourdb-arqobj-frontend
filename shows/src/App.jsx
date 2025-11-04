@@ -22,6 +22,7 @@ function App() {
         <Route path="/cadastrobanda" element={<BandRegisterPage />}/>
         <Route path="/cadastromembro" element={<MemberRegisterPage />}/>
         <Route path="/show" element={<ShowForm />} />
+        <Route path="/Login" element={<Login />}/>
       </Routes>
     </div>
   );
