@@ -1,0 +1,107 @@
+body, html, #root {
+  margin: 0;
+  padding: 0;
+  background-color: #1e1e1e;
+  font-family: 'Arial', sans-serif;
+}
+
+.banda-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;   
+  align-items: center;       
+  background-color: #1e1e1e;
+  color: white;
+  padding-top: 80px;        
+  box-sizing: border-box;
+}
+
+
+.banda-titulo {
+  color: white;
+  font-size: 2rem;
+  margin-bottom: 15px;
+}
+
+.banda-box {
+  background-color: #222;
+  width: 90%;
+  max-width: 700px;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+}
+
+.banda-header {
+  background-color: #5b0000;
+  text-align: center;
+  padding: 15px;
+}
+
+.banda-header h2 {
+  color: #fff;
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.banda-content {
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.banda-info {
+  display: flex;
+  align-items: flex-start;
+  gap: 30px;
+}
+
+.banda-imagem {
+  background-color: #d3d3d3;
+  width: 180px;
+  height: 220px;
+  border-radius: 4px;
+}
+
+.banda-detalhes h3 {
+  color: #e57373;
+  margin: 0 0 10px;
+}
+
+.banda-membros {
+  color: #e57373;
+  font-size: 0.9rem;
+}
+
+.banda-descricao h4 {
+  color: #e57373;
+  margin-bottom: 5px;
+}
+
+.banda-descricao p {
+  font-size: 0.9rem;
+  color: #ddd;
+  line-height: 1.4;
+}
+
+@media (max-width: 600px) {
+  .banda-content {
+    padding: 20px;
+  }
+
+  .banda-info {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .banda-imagem {
+    width: 140px;
+    height: 180px;
+  }
+
+  .banda-detalhes h3 {
+    margin-top: 10px;
+  }
+}

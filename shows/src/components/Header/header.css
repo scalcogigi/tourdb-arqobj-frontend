@@ -1,0 +1,46 @@
+.header {
+  background-color: #1c1c1c;
+  color: #fff;
+  padding: 15px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.header-logo {
+  font-size: 1.8rem;
+  font-weight: bold;
+  cursor: pointer;
+  color: #ff625f;
+}
+
+.header-nav button {
+  margin-left: 15px;
+  background: transparent;
+  border: 1px solid #ff625f;
+  color: #ff625f;
+  border-radius: 8px;
+  padding: 8px 12px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: all 0.2s;
+}
+
+.header-nav button:hover {
+  background-color: #ff625f;
+  color: white;
+}
+
+.logout-btn {
+  border-color: #ff3b3b;
+  color: #ff3b3b;
+}
+
+.logout-btn:hover {
+  background-color: #ff3b3b;
+  color: white;
+}
+
