@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import api from "../../services/api";
+import Header from "../Header/header.jsx";
 import "./Membros.css";
 
 export default function Membros() {
@@ -23,9 +24,9 @@ export default function Membros() {
   useEffect(() => {
     const fetchMembros = async () => {
       const fakeData = [
-        { id: 1, nome: "Giovanna", ocupacao: "Vocalista" },
-        { id: 2, nome: "Felipe", ocupacao: "Baixista" },
-        { id: 3, nome: "Carlos", ocupacao: "Teclado" },
+        { id: 1, nome: "Ana", ocupacao: "Vocalista" },
+        { id: 2, nome: "João", ocupacao: "Baixista" },
+        { id: 3, nome: "Lucas", ocupacao: "Teclado" },
       ];
 
       setMembros(fakeData);
@@ -35,12 +36,12 @@ export default function Membros() {
   }, []);
 
   return (
+    <>
+    <Header />
     <div className="membros-container">
-      <h1 className="membros-titulo">MEMBROS</h1>
 
       <div className="membros-box">
         <div className="membros-header">
-          <h2>TourDB</h2>
         </div>
 
         <div className="membros-grid">
@@ -53,5 +54,6 @@ export default function Membros() {
         </div>
       </div>
     </div>
+    </>
   );
 }

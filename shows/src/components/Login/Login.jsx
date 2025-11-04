@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import api from "../../services/api";
+import Header from "../Header/header.jsx";
 import "./Login.css";
 
 export default function LoginPage() {
@@ -38,10 +39,11 @@ export default function LoginPage() {
 };
 
   return (
+    <>
+    <Header />
     <div className="login-container">
       <div className="login-box">
         <div className="login-header">
-          <h2>TourDB</h2>
         </div>
         <form onSubmit={handleSubmit}>
           <label htmlFor="email">EMAIL</label>
@@ -64,5 +66,6 @@ export default function LoginPage() {
         </form>
       </div>
     </div>
+    </>
   );
 }
