@@ -8,7 +8,7 @@ export default function FormField({ label, name, value, onChange }) {
       <input
         className="form__input"
         name={name}
-        value={value}
+        value={value || ""}
         onChange={onChange}
       />
     </label>

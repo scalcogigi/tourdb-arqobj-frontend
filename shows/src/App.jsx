@@ -7,6 +7,7 @@ import HomePage from "./components/Homepage/HomePage.jsx";
 import { Routes, Route } from "react-router-dom";
 import MemberRegisterPage from "./components/CadastroMembro/MemberRegisterPage.jsx";
 import BandRegisterPage from "./components/CadastroBanda/BandRegisterPage.jsx";
+import ShowForm from "./components/CadastroShow/cadastroshow.jsx";
 
 function App() {
   const [count, setCount] = useState(0)
@@ -20,6 +21,7 @@ function App() {
         <Route path="/homepage" element={<HomePage />}/>
         <Route path="/cadastrobanda" element={<BandRegisterPage />}/>
         <Route path="/cadastromembro" element={<MemberRegisterPage />}/>
+        <Route path="/show" element={<ShowForm />} />
       </Routes>
     </div>
   );

@@ -2,12 +2,11 @@ import React, { useState } from "react";
 import FormField from "../FormField.jsx";
 import api from "../../services/api";
 
-export default function BandForm() {
+export default function ShowForm() {
   const [form, setForm] = useState({
     nome: "",
-    genero: "",
-    gravadora: "",
-    idShow: "",
+    data: "",
+    idLocal: "",
   });
 
   function handleChange(event) {
@@ -18,62 +17,59 @@ export default function BandForm() {
   async function handleSubmit(event) {
     event.preventDefault();
 
-    if (!form.idShow || Number(form.idShow) <= 0) {
-      alert("Informe um ID de Show válido.");
+    if (!form.idLocal || Number(form.idLocal) <= 0) {
+      alert("Informe um ID de Local válido.");
       return;
     }
 
     const payload = {
       nome: form.nome,
-      genero: form.genero,
-      gravadora: form.gravadora,
-      idShow: Number(form.idShow),
+      data: form.data, 
+      idLocal: Number(form.idLocal),
     };
 
     try {
       console.log("Payload enviado:", payload);
-      await api.post("/banda", payload);
-      alert("Banda cadastrada com sucesso!");
+      await api.post("/show", payload);
+      alert("Show cadastrado com sucesso!");
       setForm({
         nome: "",
-        genero: "",
-        gravadora: "",
-        idShow: "",
+        data: "",
+        idLocal: "",
       });
     } catch (err) {
-      console.error("Erro ao salvar banda:", err);
-      alert("Erro ao salvar banda. Verifique o ID do show e o token.");
+      console.error("Erro ao salvar show:", err);
+      alert("Erro ao salvar show. Verifique o ID do local e o token.");
     }
   }
 
   return (
     <main className="panel">
       <form className="form" onSubmit={handleSubmit}>
+        <h2 className="form__title">Cadastro de Show</h2>
+
         <FormField
-          label="NOME"
+          label="NOME DO SHOW"
           name="nome"
           value={form.nome}
           onChange={handleChange}
         />
 
-        <FormField
-          label="GÊNERO"
-          name="genero"
-          value={form.genero}
-          onChange={handleChange}
-        />
+        <div className="form__field">
+          <label className="form__label">DATA E HORA</label>
+          <input
+            type="datetime-local"
+            name="data"
+            value={form.data}
+            onChange={handleChange}
+            className="form__input"
+          />
+        </div>
 
         <FormField
-          label="GRAVADORA"
-          name="gravadora"
-          value={form.gravadora}
-          onChange={handleChange}
-        />
-
-        <FormField
-          label="ID DO SHOW"
-          name="idShow"
-          value={form.idShow}
+          label="ID DO LOCAL"
+          name="idLocal"
+          value={form.idLocal}
           onChange={handleChange}
         />
 

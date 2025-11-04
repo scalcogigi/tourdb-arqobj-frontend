@@ -1,0 +1,33 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 30px;
+  background-color: #222;
+  border-radius: 10px;
+  color: white;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.form__title {
+  text-align: center;
+  color: #ff625f;
+}
+
+.form__input,
+input[type="datetime-local"] {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #444;
+  border-radius: 6px;
+  background-color: #333;
+  color: white;
+}
+
+.form__input:focus,
+input[type="datetime-local"]:focus {
+  border-color: #ff625f;
+  outline: none;
+}

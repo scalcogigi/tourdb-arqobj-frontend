@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import FormField from "../FormField.jsx";
+import api from "../../services/api";
 
 export default function MemberForm() {
   const [form, setForm] = useState({
     nome: "",
     cpf: "",
     ocupacao: "",
-    bandas: "",
+    idBanda: "",
   });
 
   function handleChange(event) {
@@ -17,32 +18,25 @@ export default function MemberForm() {
   async function handleSubmit(event) {
     event.preventDefault();
 
+    const payload = {
+      nome: form.nome,
+      cpf: form.cpf,
+      ocupacao: form.ocupacao,
+      idBanda: Number(form.idBanda),
+    };
+
     try {
-      // Ajuste a URL para bater com a sua API em Java (Spring/H2)
-      const response = await fetch("http://localhost:8080/api/membros", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(form), 
-      });
-
-      if (!response.ok) {
-        throw new Error("Erro ao salvar membro");
-      }
-
-      // aqui você pode mostrar toast, navegar, etc.
+      console.log("Payload enviado:", payload);
+      await api.post("/membro", payload);
       alert("Membro cadastrado com sucesso!");
-
-      // limpa o formulário
       setForm({
         nome: "",
         cpf: "",
         ocupacao: "",
-        bandas: "",
+        idBanda: "",
       });
     } catch (err) {
-      console.error(err);
+      console.error("Erro ao salvar membro:", err);
       alert("Não foi possível salvar o cadastro. Verifique a API.");
     }
   }
@@ -65,16 +59,16 @@ export default function MemberForm() {
         />
 
         <FormField
-          label="OCUPACAO"
+          label="OCUPAÇÃO"
           name="ocupacao"
           value={form.ocupacao}
           onChange={handleChange}
         />
 
         <FormField
-          label="BANDAS"
-          name="bandas"
-          value={form.bandas}
+          label="ID DA BANDA"
+          name="idBanda"
+          value={form.idBanda}
           onChange={handleChange}
         />
 

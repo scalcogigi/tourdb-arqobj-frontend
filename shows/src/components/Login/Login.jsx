@@ -9,63 +9,46 @@ export default function LoginPage() {
   const [senha, setSenha] = useState("");
   const navigate = useNavigate();
 
-  // mock:
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-
-  //   if (email === "teste@tourdb.com" && senha === "1234") {
-  //     navigate("/banda");
-  //   } else {
-  //     alert("Email ou senha incorretos!");
-  //   }
-  // };
-
   const handleSubmit = async (e) => {
       e.preventDefault();
 
     try {
-      const response = await api.post("usuarios/login", {
-        email: email,
-        password: senha,
-      });
-
+      const response = await api.post("usuarios/login", {email, password: senha });
       localStorage.setItem("token", response.data);
-
-      navigate("/banda");
-    } catch (err) {
+      navigate("/homepage");
+    } catch {
       alert("Email ou senha incorretos!");
-      console.error(err);
     }
 };
 
   return (
     <>
-    <Header />
-    <div className="login-container">
-      <div className="login-box">
-        <div className="login-header">
+      <Header />
+      <div className="login-container">
+        <div className="login-box">
+          <h2>TourDB</h2>
+          <form onSubmit={handleSubmit}>
+            <label>Email</label>
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="Digite seu email"
+            />
+            <label>Senha</label>
+            <input
+              type="password"
+              value={senha}
+              onChange={(e) => setSenha(e.target.value)}
+              placeholder="Digite sua senha"
+            />
+            <button type="submit">Entrar</button>
+          </form>
+          <p onClick={() => navigate("/cadastromembro")} style={{ color: "#ff625f", cursor: "pointer" }}>
+            Criar conta
+          </p>
         </div>
-        <form onSubmit={handleSubmit}>
-          <label htmlFor="email">EMAIL</label>
-          <input
-            id="email"
-            type="text"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder="Digite seu email"
-          />
-          <label htmlFor="senha">SENHA</label>
-          <input
-            id="senha"
-            type="password"
-            value={senha}
-            onChange={(e) => setSenha(e.target.value)}
-            placeholder="Digite sua senha"
-          />
-          <button type="submit">LOGIN</button>
-        </form>
       </div>
-    </div>
     </>
   );
 }
